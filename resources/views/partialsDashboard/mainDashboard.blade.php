@@ -49,9 +49,12 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="navbar-nav">
-            <div class="nav-item text-nowrap">
-                <a class="nav-link px-3 btn btn-outline-secondary" href="#">Sign out</a>
-            </div>
+            <form action="/logout" method="POST">
+                @csrf
+                <div class="nav-item text-nowrap">
+                    <button class="nav-link px-3 btn btn-outline-secondary">Logout</button>
+                </div>
+            </form>
         </div>
     </header>
 

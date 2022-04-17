@@ -42,20 +42,21 @@
 <body class="text-center">
 
     <main class="form-signin">
-        <form>
+        <form action="/login" method="POST">
+            @csrf
             <img class="mb-1" src="{{ asset('signin/admin-logo.png') }}" alt="" width="90">
             <h1 class="h3 mb-3 fw-normal">Login Admin</h1>
 
             <div class="form-floating">
-                <input type="text" class="form-control" id="floatingInput" placeholder="username">
-                <label for="floatingInput">Username</label>
+                <input type="Email" class="form-control" id="email" placeholder="Email" name="email">
+                <label for="email">Email</label>
             </div>
             <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+                <label for="password">Password</label>
             </div>
 
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
         </form>
     </main>
 
