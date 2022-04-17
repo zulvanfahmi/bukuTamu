@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\BukutamuDashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('Dashboard.DetailTamu');
+Route::get('/login',[LoginController::class, 'index'])->middleware('guest')->name('login');
+Route::get('/',[LoginController::class, 'index'])->middleware('guest')->name('login');
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);
+
+Route::get('/dashboard', [BukutamuDashboardController::class, 'index'])->middleware('auth');
+
+Route::get('/forbidden', function () {
+    return 'this page is forbidden, please go back !';
 });
