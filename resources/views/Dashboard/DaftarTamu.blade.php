@@ -19,10 +19,12 @@
                         <td>
                             <a href="/dashboard/bukutamus/{{ $tamu->id }}" class="btn btn-outline-success btn-sm"><span
                                     data-feather="eye"></span></a>
-                            <form action="#" method="post" class="d-inline">
+                            <form action="/dashboard/bukutamus/{{ $tamu->id }}" method="post" class="d-inline">
                                 @csrf
                                 @method('delete')
-                                <button class="btn btn-outline-danger btn-sm"><span data-feather="x-circle"></span></button>
+                                <button class="btn btn-outline-danger btn-sm"
+                                    onclick='return confirm(`Hapus daftar tamu atas nama {{ $tamu->name }} ?`)'><span
+                                        data-feather="x-circle"></span></button>
                             </form>
                         </td>
                     </tr>

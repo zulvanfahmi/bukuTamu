@@ -22,14 +22,17 @@
             <div class="col-4">
                 <div class="row justify-content-center">
                     <div class="form-check col-5">
-                        <input class="form-check-input" type="radio" name="jeniskelamin" id="laki" checked
+                        <input class="form-check-input" type="radio" name="jeniskelamin" id="laki"
+                            @if (old('jeniskelamin') == 'Laki-laki') checked
+                            @elseif (is_null(old('jeniskelamin'))) checked @endif
                             value="Laki-laki">
                         <label class="form-check-label" for="pria">
                             Laki-laki
                         </label>
                     </div>
                     <div class="form-check col-5">
-                        <input class="form-check-input" type="radio" name="jeniskelamin" id="perempuan" value="Perempuan">
+                        <input class="form-check-input" type="radio" name="jeniskelamin" id="perempuan" value="Perempuan"
+                            @if (old('jeniskelamin') == 'Perempuan') checked @endif>
                         <label class="form-check-label" for="perempuan">
                             Perempuan
                         </label>
@@ -64,7 +67,7 @@
                 <input type="text" class="form-control form-control-sm @error('nohp') is-invalid @enderror" id="nohp"
                     placeholder="Nomor HP" name="nohp" required value="{{ old('nohp') }}">
                 @error('nohp')
-                    <div class="invalid-feedback">{{ $message }}</div>
+                    <div class="invalid-feedback">Cek Ulang Nomor HP Anda</div>
                 @enderror
             </div>
         </div>
