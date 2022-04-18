@@ -15,12 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login',[LoginController::class, 'index'])->middleware('guest')->name('login');
+// Route::get('/login',[LoginController::class, 'index'])->middleware('guest')->name('login');
 Route::get('/',[LoginController::class, 'index'])->middleware('guest')->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::get('/dashboard', [BukutamuDashboardController::class, 'index'])->middleware('auth');
+Route::resource('/dashboard/bukutamus', BukutamuDashboardController::class)->middleware('auth');
 
 Route::get('/forbidden', function () {
     return 'this page is forbidden, please go back !';
