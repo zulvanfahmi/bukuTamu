@@ -15,7 +15,7 @@ class BukutamuFactory extends Factory
     {
         return [
             'name' => $this->faker->name($gender = 'female'),
-            'jeniskelamin' => 'Perempuan',
+            'jeniskelamin' => 'Laki-laki',
             'alamat' => $this->faker->address(),
             'nohp' => $this->faker->phoneNumber(),
             'keperluan' => $this->faker->paragraph(1),
