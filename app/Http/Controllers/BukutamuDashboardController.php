@@ -45,7 +45,7 @@ class BukutamuDashboardController extends Controller
             'name' => 'required',
             'jeniskelamin' => 'required',
             'alamat' => 'required',
-            'nohp' => 'required|numeric|min:11',
+            'nohp' => 'required|digits_between:11,14',
             'keperluan' => 'required',
         ]);
 
@@ -99,6 +99,7 @@ class BukutamuDashboardController extends Controller
      */
     public function destroy(Bukutamu $bukutamu)
     {
-        //
+        Bukutamu::destroy($bukutamu->id);
+        return redirect('dashboard/bukutamus');
     }
 }
