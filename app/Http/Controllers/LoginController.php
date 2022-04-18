@@ -14,7 +14,9 @@ class LoginController extends Controller
      */
     public function index()
     {
-        return view('login');
+        return view('login', [
+            'pageTitle' => 'Login Admin'
+        ]);
     }
 
     /**
@@ -92,7 +94,7 @@ class LoginController extends Controller
 
         if(Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/dashboard/bukutamus');
         }
 
         return back();

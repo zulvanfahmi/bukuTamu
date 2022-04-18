@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Bukutamu;
 use Illuminate\Http\Request;
+use SebastianBergmann\Environment\Console;
 
 class BukutamuDashboardController extends Controller
 {
@@ -14,7 +15,10 @@ class BukutamuDashboardController extends Controller
      */
     public function index()
     {
-        return view('Dashboard.DaftarTamu');
+        return view('Dashboard.DaftarTamu',[
+            'pageTitle' => 'Daftar Tamu',
+            'listTamu' => Bukutamu::all(),
+        ]);
     }
 
     /**
@@ -24,7 +28,9 @@ class BukutamuDashboardController extends Controller
      */
     public function create()
     {
-        //
+        return view('Dashboard.InputTamuBaru', [
+            'pageTitle' => 'Input Tamu Baru',
+        ]);
     }
 
     /**
@@ -35,7 +41,16 @@ class BukutamuDashboardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required',
+            'jeniskelamin' => 'required',
+            'alamat' => 'required',
+            'nohp' => 'required|numeric|min:11',
+            'keperluan' => 'required',
+        ]);
+
+        Bukutamu::create($validated);
+        return redirect('/dashboard/bukutamus');
     }
 
     /**
@@ -46,7 +61,11 @@ class BukutamuDashboardController extends Controller
      */
     public function show(Bukutamu $bukutamu)
     {
-        //
+
+        return view('Dashboard.DetailTamu', [
+            'pageTitle' => 'Data Detail Tamu',
+            'tamu' => $bukutamu,
+        ]);
     }
 
     /**
