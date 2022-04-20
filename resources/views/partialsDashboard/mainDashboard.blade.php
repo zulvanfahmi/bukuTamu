@@ -51,7 +51,7 @@
         <div class="navbar-nav">
             <form action="/logout" method="POST">
                 @csrf
-                <div class="nav-item text-nowrap">
+                <div class="nav-item text-nowrap pe-4">
                     <button class="nav-link px-3 btn btn-outline-secondary">Logout</button>
                 </div>
             </form>
