@@ -1,10 +1,29 @@
 @extends('partialsDashboard.mainDashboard')
 @section('dashboardContent')
+    <div class="row justify-content-start">
+        <div class="col-4">
+            @if (session('storeSuccess'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert"><span
+                        data-feather="check-square"></span>
+                    {{ session('storeSuccess') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+            @if (session('deleteSuccess'))
+                <div class="alert alert-warning alert-dismissible fade show" role="alert"><span
+                        data-feather="alert-triangle"></span>
+                    {{ session('deleteSuccess') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+        </div>
+    </div>
     <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
+                    <th scope="col">No</th>
+                    <th scope="col">Waktu</th>
                     <th scope="col">Nama</th>
                     <th scope="col">Keperluan</th>
                     <th scope="col">Action</th>
@@ -13,9 +32,10 @@
             <tbody>
                 @foreach ($listTamu as $tamu)
                     <tr>
-                        <td>{{ $tamu->id }}</td>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $tamu->created_at->isoFormat('dddd\, D\-MM\-Y') }}</td>
                         <td>{{ $tamu->name }}</td>
-                        <td>{{ $tamu->keperluan }}</td>
+                        <td>{{ Str::limit($tamu->keperluan, 60, ' ...') }}</td>
                         <td>
                             <a href="/dashboard/bukutamus/{{ $tamu->id }}" class="btn btn-outline-success btn-sm"><span
                                     data-feather="eye"></span></a>
