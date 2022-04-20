@@ -97,7 +97,7 @@ class LoginController extends Controller
             return redirect()->intended('/dashboard/bukutamus');
         }
 
-        return back();
+        return back()->with('loginFailed', 'Email atau Password anda salah !');
     }
 
     public function logout(Request $request)

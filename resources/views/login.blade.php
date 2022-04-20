@@ -40,8 +40,13 @@
 </head>
 
 <body class="text-center">
-
     <main class="form-signin">
+        @if (session('loginFailed'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ session('loginFailed') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
         <form action="/login" method="POST">
             @csrf
             <img class="mb-1" src="{{ asset('signin/admin-logo.png') }}" alt="" width="90">
@@ -59,9 +64,9 @@
             <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
         </form>
     </main>
-
-
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>

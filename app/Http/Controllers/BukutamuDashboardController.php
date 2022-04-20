@@ -17,7 +17,7 @@ class BukutamuDashboardController extends Controller
     {
         return view('Dashboard.DaftarTamu',[
             'pageTitle' => 'Daftar Tamu',
-            'listTamu' => Bukutamu::all(),
+            'listTamu' => Bukutamu::all()->reverse(),
         ]);
     }
 
@@ -50,7 +50,7 @@ class BukutamuDashboardController extends Controller
         ]);
 
         Bukutamu::create($validated);
-        return redirect('/dashboard/bukutamus');
+        return redirect('/dashboard/bukutamus')->with('storeSuccess', 'Berhasil menyimpan data tamu baru.');
     }
 
     /**
@@ -61,7 +61,6 @@ class BukutamuDashboardController extends Controller
      */
     public function show(Bukutamu $bukutamu)
     {
-
         return view('Dashboard.DetailTamu', [
             'pageTitle' => 'Data Detail Tamu',
             'tamu' => $bukutamu,
@@ -100,6 +99,6 @@ class BukutamuDashboardController extends Controller
     public function destroy(Bukutamu $bukutamu)
     {
         Bukutamu::destroy($bukutamu->id);
-        return redirect('dashboard/bukutamus');
+        return redirect('dashboard/bukutamus')->with('deleteSuccess', 'Data tamu berhasil dihapus.');
     }
 }
