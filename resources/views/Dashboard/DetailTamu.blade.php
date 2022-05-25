@@ -28,5 +28,6 @@
             </tr>
         </tbody>
     </table>
-    <a href="/dashboard/bukutamus"><button type="button" class="btn btn-primary">Kembali</button></a>
+    <a href="/dashboard/bukutamus?page={{ request()->get('pageMain') ? request()->get('pageMain') : 1 }}"><button
+            type="button" class="btn btn-primary">Kembali</button></a>
 @endsection

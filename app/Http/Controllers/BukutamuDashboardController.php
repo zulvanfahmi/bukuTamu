@@ -17,7 +17,7 @@ class BukutamuDashboardController extends Controller
     {
         return view('Dashboard.DaftarTamu',[
             'pageTitle' => 'Daftar Tamu',
-            'listTamu' => Bukutamu::all()->reverse(),
+            'listTamu' => Bukutamu::orderBy('created_at', 'desc')->paginate(10)->withQueryString(),
         ]);
     }
 

@@ -42,7 +42,7 @@
 <body>
 
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <div class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">BukuTamu</div>
+        <div class="navbar-brand col-md-3 col-lg-2 me-0 px-2" href="#">BukuTamu</div>
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
             data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -52,7 +52,7 @@
             <form action="/logout" method="POST">
                 @csrf
                 <div class="nav-item text-nowrap pe-4">
-                    <button class="nav-link px-3 btn btn-outline-secondary">Logout</button>
+                    <button class="nav-link px-2 py-1 btn btn-outline-secondary btn-sm">Logout</button>
                 </div>
             </form>
         </div>
@@ -64,8 +64,8 @@
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div
-                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">{{ $pageTitle }}</h1>
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 mb-3 border-bottom">
+                    <h1 class="h3">{{ $pageTitle }}</h1>
                 </div>
                 @yield('dashboardContent')
             </main>

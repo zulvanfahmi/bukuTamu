@@ -37,8 +37,8 @@
                         <td>{{ $tamu->name }}</td>
                         <td>{{ Str::limit($tamu->keperluan, 60, ' ...') }}</td>
                         <td>
-                            <a href="/dashboard/bukutamus/{{ $tamu->id }}" class="btn btn-outline-success btn-sm"><span
-                                    data-feather="eye"></span></a>
+                            <a href="/dashboard/bukutamus/{{ $tamu->id }}?pageMain={{ request()->get('page') ? request()->get('page') : 1 }} "
+                                class="btn btn-outline-success btn-sm"><span data-feather="eye"></span></a>
                             <form action="/dashboard/bukutamus/{{ $tamu->id }}" method="post" class="d-inline">
                                 @csrf
                                 @method('delete')
@@ -52,4 +52,5 @@
             </tbody>
         </table>
     </div> {{-- end of table --}}
+    {{ $listTamu->links() }}
 @endsection
